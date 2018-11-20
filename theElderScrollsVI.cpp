@@ -5,99 +5,111 @@
 #include<stdlib.h>
 using namespace std;
 
-int power(int, int)      //This function is a dependency for stoint(), and is just a simpler way to calculate powers.
+int power(int, int);      //This function is a dependency for stoint(), and is just a simpler way to calculate powers.
 
-int stoint(string)       //This is the function I used to convert string to integer.
+int stoint(string);      //This is the function I used to convert string to integer.
 
-int menuVerification(int, string) //general function for ANY menu.
+int menuVerification(int, string); //general function for ANY menu.
 
-int chooseYourCharacter()
+int chooseYourCharacter();
 
-int screenSet()
+int screenSet();
+
+int wildlandsAction();
+
+class Player
+{
+    public:
+        int characterStrength;
+        int characterAgility;
+        int characterIntelligence;
+        int characterEndurance;
+        int characterCharisma;
+        int characterHealth;
+        int characterStamina;
+        int characterMagika;
+        int characterSpeed;
+        int skillSpeech;
+        int skillOneHanded;
+        int skillTwoHanded;
+        int skillBowAccuracy;
+        int skillShield;
+        int skillPickpocketing;
+        int skillSneak;
+        int skillThrownWeapons;
+        int skillStatusCondition;
+        int skillAnimalHandling;
+        int skillLockpicking;
+        string characterName;
+        string province;
+        bool title;
+};
 
 int main()
 {
-    int characterStrength;
-    int characterAgility;
-    int characterIntelligence;
-    int characterEndurance;
-    int characterCharisma;
-    int characterHealth;
-    int characterStamina;
-    int characterMagika;
-    int characterSpeech;
-    int characterSpeed;
-    int skillOneHanded;
-    int skillTwoHanded;
-    int skillBowAccuracy;
-    int skillShield;
-    int skillPickpocketing;
-    int skillSneak;
-    int skillThrownWeapons;
-    int skillStatusCondition;
-    int skillAnimalHandling;
-    int skillLockpicking;
-    bool title = true;
-    string characterName;
-    string skillTree;
-    vector<string>skills;
+    Player player;
+    player.title = true;
+    string null;
     switch(chooseYourCharacter())
     {
     case 1:
-        characterStrength = 8;
-        characterAgility = 3;
-        characterIntelligence = 4;
-        characterEndurance = 7;
-        characterCharisma = 9;
+        player.characterStrength = 8;
+        player.characterAgility = 3;
+        player.characterIntelligence = 4;
+        player.characterEndurance = 7;
+        player.characterCharisma = 9;
     break;
     case 2:
-        characterStrength = 7;
-        characterAgility = 7;
-        characterIntelligence = 5;
-        characterEndurance = 6;
-        characterCharisma = 8;
+        player.characterStrength = 7;
+        player.characterAgility = 7;
+        player.characterIntelligence = 5;
+        player.characterEndurance = 6;
+        player.characterCharisma = 8;
     break;
     case 3:
-        characterStrength = 6;
-        characterAgility = 9;
-        characterIntelligence = 8;
-        characterEndurance = 5;
-        characterCharisma = 6;
+        player.characterStrength = 6;
+        player.characterAgility = 9;
+        player.characterIntelligence = 8;
+        player.characterEndurance = 5;
+        player.characterCharisma = 6;
     break;
     case 4:
-        characterStrength = 5;
-        characterAgility = 8;
-        characterIntelligence = 9;
-        characterEndurance = 6;
-        characterCharisma = 7;
+        player.characterStrength = 5;
+        player.characterAgility = 8;
+        player.characterIntelligence = 9;
+        player.characterEndurance = 6;
+        player.characterCharisma = 7;
     break;
     case 5:
-        characterStrength = 7;
-        characterAgility = 8;
-        characterIntelligence = 4;
-        characterEndurance = 4;
-        characterCharisma = 2;
+        player.characterStrength = 7;
+        player.characterAgility = 8;
+        player.characterIntelligence = 4;
+        player.characterEndurance = 4;
+        player.characterCharisma = 2;
     break;
     case 6:
-        characterStrength = 6;
-        characterAgility = 7;
-        characterIntelligence = 8;
-        characterEndurance = 6;
-        characterCharisma = 5;
+        player.characterStrength = 6;
+        player.characterAgility = 7;
+        player.characterIntelligence = 8;
+        player.characterEndurance = 6;
+        player.characterCharisma = 5;
     break;
     case 7:
-        characterStrength = 9;
-        characterAgility = 2;
-        characterIntelligence = 3;
-        characterEndurance = 8;
-        characterCharisma = 3;
+        player.characterStrength = 9;
+        player.characterAgility = 2;
+        player.characterIntelligence = 3;
+        player.characterEndurance = 8;
+        player.characterCharisma = 3;
     break;
     }
-    screenSet(title, characterName, characterStrength, characterAgility, characterIntelligence, characterEndurance, characterCharisma);
+    screenSet();
     cout<<"What is your name, traveller?\n\n";
-    getline(cin,characterName);
-    title = false;
-    screenSet(title, characterName, characterStrength, characterAgility, characterIntelligence, characterEndurance, characterCharisma);
+    getline(cin,player.characterName);
+    player.title = false;
+    player.province = "Hammerfell";
+    cout<<player.title;
+    cout<<player.province;
+    wildlandsAction();
 }
 
 int power(int base, int index)      //This function is a dependency for stoint(), and is just a simpler way to calculate powers.
@@ -186,9 +198,8 @@ int chooseYourCharacter()
 
 int screenSet()
 {
-    P
-
-    if(title = true)
+    Player player;
+    if(player.title == true)
     {
         system("CLS");
         cout<<"------------------------------------------------------------------------------\n";
@@ -199,7 +210,15 @@ int screenSet()
     {
         system("CLS");
         cout<<"------------------------------------------------------------------------------\n";
-        cout<<"------------------------     "<<characterName<<"     ------------------------\n";
+        cout<<"--------- HP: "<<player.characterHealth<<" --------     "<<player.characterName<<"     -------- Mk: "<<player.characterMagika<<" --------\n";
         cout<<"------------------------------------------------------------------------------\n";
+        cout<<"-- Strength: "<<player.characterStrength<<" Endurance: "<<player.characterEndurance<<" Charisma: "<<player.characterCharisma<<" Intelligence: "<<player.characterIntelligence<<" Agility: "<<player.characterAgility<<"\n\n";
     }
+}
+
+int wildlandsAction()
+{
+    Player player;
+    screenSet();
+    cout<<"You are in the wildlands of the province of "<<player.province<<". \n\n";
 }
