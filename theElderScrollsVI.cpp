@@ -5,18 +5,6 @@
 #include<stdlib.h>
 using namespace std;
 
-int power(int, int);      //This function is a dependency for stoint(), and is just a simpler way to calculate powers.
-
-int stoint(string);      //This is the function I used to convert string to integer.
-
-int menuVerification(int, string); //general function for ANY menu.
-
-int chooseYourCharacter();
-
-int screenSet();
-
-int wildlandsAction();
-
 class Player
 {
     public:
@@ -44,6 +32,18 @@ class Player
         string province;
         bool title;
 };
+
+int power(int, int);      //This function is a dependency for stoint(), and is just a simpler way to calculate powers.
+
+int stoint(string);      //This is the function I used to convert string to integer.
+
+int menuVerification(int, string); //general function for ANY menu.
+
+int chooseYourCharacter();
+
+int screenSet();
+
+int wildlandsAction();
 
 int main()
 {
