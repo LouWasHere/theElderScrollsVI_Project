@@ -28,6 +28,7 @@ class Player
         int skillStatusCondition;
         int skillAnimalHandling;
         int skillLockpicking;
+        string action;
         string characterName;
         string province;
         bool title;
@@ -45,9 +46,10 @@ int screenSet();
 
 int wildlandsAction();
 
+Player player;
+
 int main()
 {
-    Player player;
     player.title = true;
     string null;
     switch(chooseYourCharacter())
@@ -105,10 +107,23 @@ int main()
     screenSet();
     cout<<"What is your name, traveller?\n\n";
     getline(cin,player.characterName);
+    player.characterHealth = ((player.characterEndurance + player.characterStrength)*10);
+    player.characterStamina = ((player.characterStrength + player.characterAgility)*10);
+    player.characterMagika = ((player.characterIntelligence + player.characterStrength)*10);
+    player.characterSpeed = ((player.characterAgility + player.characterEndurance)*10);
+    player.skillSneak = ((player.characterAgility)*10);
+    player.skillSpeech = ((player.characterCharisma + player.characterIntelligence)*5);
+    player.skillLockpicking = (((player.skillSneak/10)+player.characterAgility)*5);
+    player.skillBowAccuracy = ((player.characterAgility)*10);
+    player.skillOneHanded = ((player.characterAgility + player.characterStrength)*5);
+    player.skillTwoHanded = ((player.characterStrength + (player.characterSpeed/20))*5);
+    player.skillStatusCondition = (((player.characterMagika/20) + player.characterIntelligence)*5);
+    player.skillPickpocketing = player.skillSneak;
+    player.skillAnimalHandling = ((player.characterCharisma + player.characterAgility)*5);
+    player.skillThrownWeapons = ((player.characterAgility + (player.characterSpeed/20))*5);
+    player.skillShield = ((player.characterStrength + (player.characterStamina/20))*5);
     player.title = false;
     player.province = "Hammerfell";
-    cout<<player.title;
-    cout<<player.province;
     wildlandsAction();
 }
 
@@ -198,7 +213,6 @@ int chooseYourCharacter()
 
 int screenSet()
 {
-    Player player;
     if(player.title == true)
     {
         system("CLS");
@@ -210,15 +224,16 @@ int screenSet()
     {
         system("CLS");
         cout<<"------------------------------------------------------------------------------\n";
-        cout<<"--------- HP: "<<player.characterHealth<<" --------     "<<player.characterName<<"     -------- Mk: "<<player.characterMagika<<" --------\n";
+        cout<<"------------ HP: "<<player.characterHealth<<" ------------   "<<player.characterName<<"   ------------ Mk: "<<player.characterMagika<<" -----------\n";
         cout<<"------------------------------------------------------------------------------\n";
-        cout<<"-- Strength: "<<player.characterStrength<<" Endurance: "<<player.characterEndurance<<" Charisma: "<<player.characterCharisma<<" Intelligence: "<<player.characterIntelligence<<" Agility: "<<player.characterAgility<<"\n\n";
+        cout<<"------ Strength: "<<player.characterStrength<<" Endurance: "<<player.characterEndurance<<" Charisma: "<<player.characterCharisma<<" Intelligence: "<<player.characterIntelligence<<" Agility: "<<player.characterAgility<<" -------\n\n\n";
     }
 }
 
 int wildlandsAction()
 {
-    Player player;
     screenSet();
     cout<<"You are in the wildlands of the province of "<<player.province<<". \n\n";
+    cout<<"You can:\n\n1. Look for something to fight.\n\n2. Travel\n\n3. Check Inventory\n\n4. Check Map\n\n";
+    getline(cin, player.action);
 }
