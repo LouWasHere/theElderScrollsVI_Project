@@ -28,11 +28,54 @@ class Player
         int skillStatusCondition;
         int skillAnimalHandling;
         int skillLockpicking;
+        int characterLevel;
         string action;
         string characterName;
         string province;
         bool title;
 };
+
+Player player;
+
+class enemy
+{
+    public:
+        int enemyLevel = player.characterLevel;
+};
+
+class magicEnemy : public enemy
+{
+    public:
+        string name = "Magical Bandit";
+        int skillStatusCondition = enemyLevel * 5;
+        int spellDamage = enemyLevel * 5;
+};
+
+class meleeEnemy : public enemy
+{
+    public:
+        string name = "Fisticuffs Bandit";
+        int skillUnarmed = enemyLevel * 6;
+        int hitDamage = enemyLevel * 4;
+};
+
+class armedEnemy : public enemy
+{
+    public:
+        string name = "Swordsman Bandit";
+        int skillOneHanded = enemyLevel * 4;
+        int weaponDamage = enemyLevel * 7;
+};
+
+class wolfEnemy : public enemy
+{
+    public:
+        string name = "Wolf";
+        int skillUnarmed = enemyLevel * 8;
+        int hitDamage = enemyLevel * 3;
+};
+
+
 
 int power(int, int);      //This function is a dependency for stoint(), and is just a simpler way to calculate powers.
 
@@ -45,8 +88,6 @@ int chooseYourCharacter();
 int screenSet();
 
 int wildlandsAction();
-
-Player player;
 
 int main()
 {
@@ -122,6 +163,7 @@ int main()
     player.skillAnimalHandling = ((player.characterCharisma + player.characterAgility)*5);
     player.skillThrownWeapons = ((player.characterAgility + (player.characterSpeed/20))*5);
     player.skillShield = ((player.characterStrength + (player.characterStamina/20))*5);
+    player.characterLevel = 1;
     player.title = false;
     player.province = "Hammerfell";
     wildlandsAction();
