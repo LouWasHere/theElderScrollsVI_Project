@@ -3,9 +3,10 @@
 #include<vector>
 #include<cstdlib>
 #include<stdlib.h>
+#include <ctime>
 using namespace std;
 
-class Player
+class player
 {
     public:
         int characterStrength;
@@ -35,13 +36,19 @@ class Player
         bool title;
 };
 
-Player player;
+player player;
+
+
+
+
 
 class enemy
 {
     public:
         int enemyLevel = player.characterLevel;
 };
+
+enemy enemy;
 
 class magicEnemy : public enemy
 {
@@ -75,7 +82,21 @@ class wolfEnemy : public enemy
         int hitDamage = enemyLevel * 3;
 };
 
+magicEnemy magicEnemy;
 
+meleeEnemy meleeEnemy;
+
+armedEnemy armedEnemy;
+
+wolfEnemy wolfEnemy;
+
+void wildlandsRandomEncounter();
+
+void travel();
+
+void openInventory();
+
+void openMap();
 
 int power(int, int);      //This function is a dependency for stoint(), and is just a simpler way to calculate powers.
 
@@ -278,4 +299,70 @@ int wildlandsAction()
     cout<<"You are in the wildlands of the province of "<<player.province<<". \n\n";
     cout<<"You can:\n\n1. Look for something to fight.\n\n2. Travel\n\n3. Check Inventory\n\n4. Check Map\n\n";
     getline(cin, player.action);
+    switch(menuVerification(4, player.action))
+    {
+    case 1:
+        wildlandsRandomEncounter();
+    break;
+    case 2:
+        travel();
+    break;
+    case 3:
+        openInventory();
+    break;
+    case 4:
+        openMap();
+    break;
+    }
+}
+
+void wildlandsRandomEncounter()
+{
+    screenSet();
+    srand(time(0));
+    cout<<(rand()%5)+1;
+
+}
+
+void travel()
+{
+    screenSet();
+    cout<<"Would you like to travel:\n\n1. Nearest Town\n\n2. Cross Border\n\n";
+    getline(cin,player.action);
+    switch(menuVerification(2,player.action));
+    {
+    case 1:
+        if(player.province = "Hammerfell")
+        {
+            dragonstone();
+        }
+        if(player.province = "Skryim")
+        {
+            winterhold();
+        }
+        if(player.province = "Morrowind")
+        {
+
+        }
+        if(player.province = "Summerset")
+        {
+
+        }
+    break;
+    case 2:
+
+    break;
+    }
+}
+
+void openInventory()
+{
+    screenSet();
+
+}
+
+void openMap()
+{
+    screenSet();
+
 }
