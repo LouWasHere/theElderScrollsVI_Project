@@ -38,10 +38,6 @@ class player
 
 player player;
 
-
-
-
-
 class enemy
 {
     public:
@@ -97,6 +93,8 @@ void travel();
 void openInventory();
 
 void openMap();
+
+void cityAction(string);
 
 int power(int, int);      //This function is a dependency for stoint(), and is just a simpler way to calculate powers.
 
@@ -329,25 +327,10 @@ void travel()
     screenSet();
     cout<<"Would you like to travel:\n\n1. Nearest Town\n\n2. Cross Border\n\n";
     getline(cin,player.action);
-    switch(menuVerification(2,player.action));
+    switch(menuVerification(2,player.action))
     {
     case 1:
-        if(player.province = "Hammerfell")
-        {
-            dragonstone();
-        }
-        if(player.province = "Skryim")
-        {
-            winterhold();
-        }
-        if(player.province = "Morrowind")
-        {
 
-        }
-        if(player.province = "Summerset")
-        {
-
-        }
     break;
     case 2:
 
