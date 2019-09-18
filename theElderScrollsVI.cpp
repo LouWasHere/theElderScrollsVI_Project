@@ -86,6 +86,22 @@ armedEnemy armedEnemy;
 
 wolfEnemy wolfEnemy;
 
+class provinceData
+{
+
+};
+
+provinceData provinceData;
+
+class hammerfell : public enemy
+{
+    public:
+        bool questAvailable = true;
+        int levelOfItemsForSale = 1;
+        int levelOfAgressionTowardsPlayer = 0;
+        bool accessible = true;
+};
+
 void wildlandsRandomEncounter();
 
 void travel();
@@ -94,7 +110,7 @@ void openInventory();
 
 void openMap();
 
-void cityAction(string);
+void cityAction();
 
 int power(int, int);      //This function is a dependency for stoint(), and is just a simpler way to calculate powers.
 
@@ -330,7 +346,7 @@ void travel()
     switch(menuVerification(2,player.action))
     {
     case 1:
-
+        cityAction();
     break;
     case 2:
 
@@ -348,4 +364,43 @@ void openMap()
 {
     screenSet();
 
+}
+
+void cityAction()
+{
+    if(hammerfell().accessible == true && hammerfell().levelOfAgressionTowardsPlayer < 10)
+    {
+        screenSet();
+        cout<<"Would you like to:\n\n";
+        cout<<"1. Trade with the local market\n\n";
+        cout<<"2. Rest at the Inn\n\n";
+        if(hammerfell().questAvailable == true)
+        {
+            cout<<"3. Accept a Quest\n";
+            switch(menuVerification(3,player.action))
+            {
+            case 1:
+
+            break;
+            case 2:
+
+            break;
+            case 3:
+
+            break;
+            }
+        }
+        else
+        {
+            switch(menuVerification(3,player.action))
+            {
+            case 1:
+
+            break;
+            case 2:
+
+            break;
+            }
+        }
+    }
 }
