@@ -1,4 +1,4 @@
-#include<iostream>      //All the libraries I used.
+#include<iostream>      //All the libraries I used, which allow me to code with more functions
 #include<string>
 #include<vector>
 #include<cstdlib>
